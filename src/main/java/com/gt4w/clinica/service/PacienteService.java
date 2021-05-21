@@ -18,9 +18,8 @@ public class PacienteService {
 
 	public Paciente save(PacienteDTO paciente) throws Exception {
 		try {
-			// nome, cpf e uf obrigatorios
 			String strong_salt = BCrypt.gensalt(10);
-			String cpf_criptografado = BCrypt.hashpw(paciente.getCpf(), strong_salt);  
+			String cpf_criptografado = BCrypt.hashpw(paciente.getCpf(), strong_salt);
 			
 			Paciente pacienteCriado = new Paciente(paciente.getNome(), cpf_criptografado, paciente.getUf(),
 					paciente.getData_nascimento(), paciente.getPeso(), paciente.getAltura());
@@ -36,5 +35,15 @@ public class PacienteService {
 		List<Paciente> pacientes = this.pacienteRepository.findAll();
 
 		return pacientes;
+	}
+	
+	public String delete(Long id) {
+		try {
+			this.pacienteRepository.deleteById(id);
+			return "Paciente deletado com sucesso!";
+		} catch (Exception e) {
+			throw e;
+		}
+
 	}
 }
