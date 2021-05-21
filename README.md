@@ -10,3 +10,5 @@
 - Faça o clone do projeto na sua máquina usando `git clone https://github.com/lucasanthony/gt4w-clinica-api.git`
 - Utilize o comando `mvn spring-boot:run` para iniciar o servidor
 - Teste/Utilize as rotas em um cliente REST de sua preferência
+
+- Os endpoints só funcionarão mediante fornecimento de um token jwt retornado através do login
